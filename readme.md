@@ -53,3 +53,8 @@ Expected output given the default ``input.txt`` file provided in the repo:
 Expected output given an ``input.txt`` file that represents a table of a system not in a safe state:
 ![alt text](image-1.png)
 
+## Solution
+![alt text](image-3.png)
+
+Given the table above, there is a safe sequence that exists. It is P3, P1, P0, P2, then P4.
+
