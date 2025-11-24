@@ -9,8 +9,13 @@ struct Process {
     int process_id;
 };
 
-int main() {
-    std::ifstream in_file("input.txt");
+int main(int argc, char *argv[]) {
+    if ((argc != 2)) {
+        std::cout << "Usage: ./banker <input file>" << std::endl;
+        return -1;
+    } 
+    char* file_name = argv[1];
+    std::ifstream in_file(file_name);
 
     std::vector<Process> processes;
     std::vector<Process> safe_sequence;
@@ -119,10 +124,11 @@ int main() {
             std::cout << std::endl;
         }
     } else {
-        std::cout << "ERROR: Could not read input file \"input.txt\". Ensure it exists at the program's running directory!" << std::endl;
+        std::cout << "ERROR: Could not read input file" << file_name << "." << std::endl;
         return -1;
     }
 
+    in_file.close();
 
     return 0;
 }

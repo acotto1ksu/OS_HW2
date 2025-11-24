@@ -5,10 +5,16 @@
 Compile on a Linux/UNIX machine using g++:
 - ``g++ banker.cpp -o banker``
 
-Run the program using ``./banker``
+Run the program using ``./banker [INPUT FILE]``
 
-Ensure the ``input.txt`` file exists in the current directory the program is being ran from.
+Where ``[INPUT FILE]`` is of the format specified below:
 
+- First line of the file is the amount of resources available. The amount of resources can be any amount, but must be separated by spaces.
+- Separator line after the first line
+- The third and fourth line represent the first process' allocated and maximum resources, respectively. Each process must have the same amount of types of resources as defined in the first line (available resources).
+- Separator line after each process. Repeat the above step and this step for each process in the table.
+
+A sample input file is provided, named ``input.txt``.
 ## Explanation of Banker's Algorithm and Implementation
 Banker's algorithm is used to determine the best route of action for running processes to ensure there are enough resources to satisfy each process. This ensures the system is in a safe state, and deadlock can not occur.
 
@@ -20,13 +26,7 @@ If the algorithm cannot find one process to satisfy with the resources it curren
 
 <br>
 
-The program implements Banker's algorithm through parsing an ``input.txt`` file representing a snapshot of a system's state. 
-
-The file is formatted as such:
-- First line of the file is the amount of resources available. The amount of resources can be any amount, but must be separated by spaces.
-- Separator line after the first line
-- The third and fourth line represent the first process' allocated and maximum resources, respectively. Each process must have the same amount of types of resources as defined in the first line (available resources).
-- Separator line after each process. Repeat the above step and this step for each process in the table.
+The program implements Banker's algorithm through parsing an input file representing a snapshot of a system's state. 
 
 Each process is parsed into an instance of the following struct:
 
@@ -50,7 +50,7 @@ If every process is determined to not be in the safe sequence, then the system i
 Expected output given the default ``input.txt`` file provided in the repo:
 ![alt text](image.png)
 
-Expected output given an ``input.txt`` file that represents a table of a system not in a safe state:
+Expected output given an input file that represents a table of a system not in a safe state:
 ![alt text](image-1.png)
 
 ## Solution
