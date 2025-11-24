@@ -12,7 +12,13 @@ Ensure the ``input.txt`` file exists in the current directory the program is bei
 ## Explanation of Banker's Algorithm and Implementation
 Banker's algorithm is used to determine the best route of action for running processes to ensure there are enough resources to satisfy each process. This ensures the system is in a safe state, and deadlock can not occur.
 
+Banker's algorithm works by checking if the system has a sufficient amount of resources needed to fulfill a process' request. The amount of resources a process needs is determiend by ``need = max - allocated``, where allocated is the amount of resources the process is currently using, and ``max`` is the amount of resources the process wishes to have.
 
+If the system's available resources can grand the request (``need <= available``), then it can be added to thee safe sequence. Once a process finishes using it's needed resources, it will give up the resources that it requested, plus the ones it was using. It will be added to a sequence of processes that shall be ran in that order to ensure the system is in a safe state. The algorithm then checks all the other processes in the system until all processes can be satisfied with the system's available resources.
+
+If the algorithm cannot find one process to satisfy with the resources it currently holds, then the system is not in a safe state.
+
+<br>
 
 The program implements Banker's algorithm through parsing an ``input.txt`` file representing a snapshot of a system's state. 
 
